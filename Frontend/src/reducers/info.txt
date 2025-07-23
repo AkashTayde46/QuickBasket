@@ -1,0 +1,1 @@
+Reducers specify how the state should change in response to actions. They are pure functions that take the current state and an action, then return the new state.

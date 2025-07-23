@@ -1,0 +1,1 @@
+Actions are plain JavaScript objects that describe what should happen in the application. They must have a type property and can include additional data (payload).

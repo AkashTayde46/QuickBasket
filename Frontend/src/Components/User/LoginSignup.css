@@ -1,0 +1,302 @@
+/* LoginSignup.css */
+
+.LoginSignupContainer {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.LoginSignupBox {
+  background-color: white;
+  width: 25vw;
+  height: 70vh;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  min-width: 350px;
+}
+
+/* Toggle Section */
+.login_signUp_toggle {
+  display: flex;
+  height: 3vmax;
+  min-height: 50px;
+}
+
+.login_signUp_toggle > p {
+  color: rgba(0, 0, 0, 0.678);
+  font: 300 1vmax "Roboto", sans-serif;
+  transition: all 0.5s;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  margin: 0;
+  background: none;
+  border: none;
+  position: relative;
+  z-index: 2;
+}
+
+.login_signUp_toggle > p:hover {
+  color: rgba(0, 0, 0, 1);
+}
+
+/* Switcher Button (Sliding Indicator) */
+.LoginSignupBox > button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  height: 3vmax;
+  min-height: 50px;
+  width: 50%;
+  border: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.5s;
+  z-index: 1;
+  border-radius: 0;
+}
+
+/* Switcher positions */
+.shiftToNeutral {
+  transform: translateX(0%);
+}
+
+.shiftToRight {
+  transform: translateX(100%);
+}
+
+/* Form Containers */
+.loginForm,
+.signUpForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding: 2vmax;
+  justify-content: space-evenly;
+  height: 70%;
+  transition: transform 0.5s;
+  position: absolute;
+width: -webkit-fill-available;
+  top: 10%;
+}
+
+/* Form positioning animations */
+.loginForm {
+  transform: translateY(0);
+}
+
+.signUpForm {
+  transform: translateY(100vh);
+}
+
+.shiftToLeft {
+  transform: translateY(-100vh);
+}
+
+.shiftToNeutralForm {
+  transform: translateY(0);
+}
+
+/* Input Groups */
+.loginEmail,
+.loginPassword,
+.signUpName,
+.signUpEmail,
+.signUpPassword {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin: 1vmax 0;
+  border: 1px solid rgba(0, 0, 0, 0.267);
+  border-radius: 4px;
+  padding: 0.5vmax;
+  background: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s;
+}
+
+.loginEmail:focus-within,
+.loginPassword:focus-within,
+.signUpName:focus-within,
+.signUpEmail:focus-within,
+.signUpPassword:focus-within {
+  border-color: #667eea;
+  box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+}
+
+/* Icons */
+.loginEmail > svg,
+.loginPassword > svg,
+.signUpEmail > svg,
+.signUpPassword > svg {
+  position: absolute;
+  transform: translateX(1vmax);
+  font-size: 1.6vmax;
+  color: rgba(0, 0, 0, 0.623);
+  min-width: 20px;
+}
+
+/* Input Fields */
+.loginForm > div > input,
+.signUpForm > div > input {
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 1vmax 4vmax;
+  padding-right: 1vmax;
+  font: 300 0.9vmax cursive;
+  background: transparent;
+}
+
+.signUpName > input {
+  padding: 1vmax 1vmax;
+  padding-right: 1vmax;
+}
+
+/* Links */
+.loginForm > a {
+  color: rgba(0, 0, 0, 0.651);
+  text-decoration: none;
+  align-self: flex-end;
+  transition: all 0.5s;
+  font: 500 0.8vmax "Gill Sans";
+  margin: 1vmax 0;
+}
+
+.loginForm > a:hover {
+  color: black;
+}
+
+/* Submit Buttons */
+.loginBtn,
+.signUpBtn {
+  border: none;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font: 300 0.9vmax "Roboto", sans-serif;
+  width: 100%;
+  padding: 0.8vmax;
+  cursor: pointer;
+  transition: all 0.5s;
+  border-radius: 4px;
+  outline: none;
+  margin: 1vmax 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.loginBtn:hover,
+.signUpBtn:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+  .LoginSignupContainer {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .LoginSignupBox {
+    width: 90vw;
+    height: 95vh;
+    min-width: unset;
+  }
+
+  .login_signUp_toggle {
+    height: 5vmax;
+  }
+
+  .login_signUp_toggle > p {
+    font: 300 2vmax "Roboto", sans-serif;
+  }
+
+  .LoginSignupBox > button {
+    height: 5vmax;
+  }
+
+  .loginForm,
+  .signUpForm {
+    padding: 5vmax;
+    width: calc(100% - 10vmax);
+  }
+
+  .loginEmail > svg,
+  .loginPassword > svg,
+  .signUpEmail > svg,
+  .signUpPassword > svg {
+    font-size: 4vmax;
+    transform: translateX(2vmax);
+  }
+
+  .loginForm > div > input,
+  .signUpForm > div > input {
+    padding: 2vmax 8vmax;
+    font: 300 1.7vmax cursive;
+  }
+
+  .signUpName > input {
+    padding: 2vmax 2vmax;
+  }
+
+  .loginForm > a {
+    font: 500 1.8vmax "Gill Sans";
+  }
+
+  .loginBtn,
+  .signUpBtn {
+    font: 300 1.9vmax "Roboto", sans-serif;
+    padding: 1.8vmax;
+  }
+}
+
+/* Additional animations */
+.LoginSignupBox {
+  animation: slideIn 0.8s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus animations */
+.loginForm > div > input:focus,
+.signUpForm > div > input:focus {
+  transform: scale(1.02);
+}
+
+/* Loading state styles */
+.loginBtn:disabled,
+.signUpBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Error state styles - you can add these classes via JavaScript when there are errors */
+.error-input {
+  border-color: #ff4757 !important;
+  box-shadow: 0 0 5px rgba(255, 71, 87, 0.3) !important;
+}
+
+.error-input:focus-within {
+  border-color: #ff4757 !important;
+  box-shadow: 0 0 5px rgba(255, 71, 87, 0.5) !important;
+}

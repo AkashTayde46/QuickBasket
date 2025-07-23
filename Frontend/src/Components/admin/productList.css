@@ -1,0 +1,92 @@
+/* productList.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background: rgba(15, 15, 35, 0.95);
+  color: #fff;
+}
+
+.productListContainer {
+  flex: 1;
+  padding: 2rem;
+  margin-left: 280px; /* Match sidebar width */
+  background: rgba(20, 20, 40, 0.9);
+  min-height: 100vh;
+  overflow-x: auto;
+  backdrop-filter: blur(10px);
+}
+
+#productListHeading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+/* DataGrid Styling */
+.productListTable {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+.MuiDataGrid-root {
+  border: none !important;
+  color: white !important;
+}
+
+.MuiDataGrid-cell {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 0.9rem;
+}
+
+.MuiDataGrid-columnHeader {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.MuiDataGrid-columnHeaderTitle {
+  font-weight: 600;
+}
+
+.MuiDataGrid-footerContainer {
+  background-color: rgba(255, 255, 255, 0.02);
+  color: white;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.MuiDataGrid-row:hover {
+  background-color: rgba(102, 126, 234, 0.05);
+}
+
+.greenColor {
+  color: #32cd32 !important; /* lime green */
+  font-weight: 600;
+}
+
+.redColor {
+  color: #ff4d4f !important; /* bright red */
+  font-weight: 600;
+}
+
+/* Action buttons */
+.MuiButtonBase-root {
+  min-width: 0 !important;
+  padding: 6px !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.MuiButtonBase-root:hover {
+  color: #667eea !important;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}

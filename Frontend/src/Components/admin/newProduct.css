@@ -1,0 +1,83 @@
+/* newProduct.css */
+
+.dashboard {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background: #0f0f23;
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+.newProductContainer {
+  flex: 1;
+  margin-left: 280px; /* Sidebar width */
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(15,15,35,0.95), rgba(30,30,60,0.95));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.createProductForm {
+  background-color: rgba(255, 255, 255, 0.02);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.createProductForm > h1 {
+  font-size: 2rem;
+  text-align: center;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.createProductForm > div {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.createProductForm input,
+.createProductForm textarea,
+.createProductForm select {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  font-size: 1rem;
+  outline: none;
+}
+
+.createProductForm textarea {
+  resize: none;
+}
+
+.createProductForm select option {
+  background-color: #1f1f3a;
+  color: white;
+}
+
+#createProductBtn {
+  background: #667eea;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#createProductBtn:hover {
+  background: #5566cc;
+  transform: scale(1.03);
+}

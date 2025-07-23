@@ -1,0 +1,123 @@
+/* Navbar.css */
+
+/* General Reset */
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+  }
+  .navbar-logo {
+    flex: 0 0 auto; /* Prevent the logo from shrinking */
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-logo img {
+    height: 50px; /* Adjust the height of the logo */
+    width: auto; /* Maintain aspect ratio */
+  }
+  
+  /* Navbar Container */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    height: 60px;
+    background-color: #333;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Logo */
+  .navbar-logo a {
+    font-size: 1.8rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .navbar-logo a:hover {
+    color: #eb4034;
+    transform: scale(1.1);
+  }
+  
+  /* Navbar Links */
+  .navbar-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 1.2rem;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #eb4034;
+  }
+  
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #eb4034;
+    transition: width 0.3s ease;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Active Link Styling */
+  .active-link {
+    color: #eb4034;
+    font-weight: bold;
+  }
+  
+  /* Navbar Icons */
+  .navbar-icons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .icon {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.4rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .icon:hover {
+    color: #eb4034;
+    transform: scale(1.2);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem;
+    }
+  
+    .navbar-logo {
+      margin-bottom: 1rem;
+    }
+  
+    .navbar-links {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .navbar-icons {
+      margin-top: 1rem;
+    }
+  }
+  

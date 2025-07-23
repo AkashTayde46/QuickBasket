@@ -1,0 +1,380 @@
+/* sidebar.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+.sidebar {
+  width: 280px;
+  min-height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(15, 15, 35, 0.95);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  padding: 2rem 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-y: auto;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.1) 0%,
+    rgba(118, 75, 162, 0.05) 50%,
+    rgba(240, 147, 251, 0.1) 100%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Logo/Home Link */
+.sidebar > a:first-child {
+  display: block;
+  padding: 0 2rem 2rem 2rem;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.sidebar > a:first-child img {
+  width: 120px;
+  height: auto;
+  filter: brightness(1.2);
+  transition: transform 0.3s ease;
+}
+
+.sidebar > a:first-child:hover img {
+  transform: scale(1.05);
+}
+
+/* Navigation Links */
+.sidebar > a:not(:first-child) {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  margin: 0.25rem 1rem;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.sidebar > a:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.sidebar > a:not(:first-child):hover::before,
+.sidebar > a:not(:first-child).active-link::before {
+  width: 100%;
+}
+
+.sidebar > a:not(:first-child):hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.sidebar > a:not(:first-child).active-link {
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.2));
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+  transform: translateX(8px);
+}
+
+.sidebar > a:not(:first-child) p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: inherit;
+}
+
+.sidebar > a:not(:first-child) svg {
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.sidebar > a:not(:first-child):hover svg,
+.sidebar > a:not(:first-child).active-link svg {
+  color: #667eea;
+  transform: scale(1.1);
+}
+
+/* Accordion Styling */
+.sidebar .MuiAccordion-root {
+  background: transparent !important;
+  box-shadow: none !important;
+  margin: 0.5rem 1rem !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.sidebar .MuiAccordion-root:hover {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-color: rgba(102, 126, 234, 0.2) !important;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1) !important;
+}
+
+.sidebar .MuiAccordion-root.Mui-expanded {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.05)) !important;
+  border-color: rgba(102, 126, 234, 0.3) !important;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2) !important;
+}
+
+.sidebar .MuiAccordion-root::before {
+  display: none !important;
+}
+
+/* Accordion Summary */
+.sidebar .MuiAccordionSummary-root {
+  padding: 1rem 1.5rem !important;
+  min-height: auto !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+}
+
+.sidebar .MuiAccordionSummary-root:hover {
+  color: #ffffff !important;
+}
+
+.sidebar .MuiAccordionSummary-root.Mui-expanded {
+  color: #ffffff !important;
+}
+
+.sidebar .MuiAccordionSummary-content {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  margin: 0 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.95rem !important;
+}
+
+.sidebar .MuiAccordionSummary-content svg:first-child {
+  font-size: 1.2rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.sidebar .MuiAccordionSummary-root:hover .MuiAccordionSummary-content svg:first-child,
+.sidebar .MuiAccordionSummary-root.Mui-expanded .MuiAccordionSummary-content svg:first-child {
+  color: #667eea !important;
+  transform: scale(1.1) !important;
+}
+
+/* Expand Icon */
+.sidebar .MuiAccordionSummary-expandIconWrapper {
+  color: rgba(255, 255, 255, 0.5) !important;
+  transition: all 0.3s ease !important;
+}
+
+.sidebar .MuiAccordionSummary-expandIconWrapper.Mui-expanded {
+  color: #667eea !important;
+  transform: rotate(180deg) !important;
+}
+
+.sidebar .MuiAccordionSummary-root:hover .MuiAccordionSummary-expandIconWrapper {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Accordion Details */
+.sidebar .MuiAccordionDetails-root {
+  padding: 0 !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Accordion Sub-links */
+.sidebar .MuiAccordionDetails-root a {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+  font-size: 0.9rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  margin: 0.25rem;
+  border-radius: 8px;
+  gap: 0.75rem;
+}
+
+.sidebar .MuiAccordionDetails-root a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.2));
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+  z-index: -1;
+}
+
+.sidebar .MuiAccordionDetails-root a:hover::before,
+.sidebar .MuiAccordionDetails-root a.active-link::before {
+  width: 100%;
+}
+
+.sidebar .MuiAccordionDetails-root a:hover {
+  color: #ffffff;
+  transform: translateX(3px);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.sidebar .MuiAccordionDetails-root a.active-link {
+  color: #ffffff;
+  background: rgba(102, 126, 234, 0.2);
+  transform: translateX(5px);
+}
+
+.sidebar .MuiAccordionDetails-root a svg {
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.sidebar .MuiAccordionDetails-root a:hover svg,
+.sidebar .MuiAccordionDetails-root a.active-link svg {
+  color: #667eea;
+  transform: scale(1.1);
+}
+
+.sidebar .MuiAccordionDetails-root a p {
+  margin: 0;
+  font-weight: inherit;
+}
+
+/* Animations */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Custom Scrollbar */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5a6fd8, #6a419a);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  /* Mobile overlay */
+  .sidebar::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 280px;
+    width: calc(100vw - 280px);
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .sidebar.open::after {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 250px;
+  }
+  
+  .sidebar > a:not(:first-child),
+  .sidebar .MuiAccordionSummary-root {
+    padding-left: 1.5rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .sidebar .MuiAccordionDetails-root a {
+    padding-left: 1.25rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100vw;
+  }
+  
+  .sidebar::after {
+    display: none;
+  }
+}
+
+/* Focus states for accessibility */
+.sidebar a:focus,
+.sidebar .MuiAccordionSummary-root:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Loading animation for when data is being fetched */
+.sidebar a[aria-disabled="true"] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Hover effects for better UX */
+.sidebar > a:not(:first-child):active,
+.sidebar .MuiAccordionDetails-root a:active {
+  transform: translateX(3px) scale(0.98);
+  transition: transform 0.1s ease;
+}

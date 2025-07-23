@@ -1,0 +1,1 @@
+Constants are string literals used to define action types. They help avoid typos and make it easier to manage action types in large applications. Instead of writing action types directly in action creators and reducers, we define them in a separate file.

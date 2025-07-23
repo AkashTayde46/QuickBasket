@@ -1,0 +1,116 @@
+/* Wrapper for the entire page */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #root {
+    flex: 1; /* Ensures content takes up remaining space above the footer */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* General Footer Styles */
+  #footer {
+    background-color: #101820; /* Dark background */
+    color: #ffffff; /* White text */
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center; /* Center align text for smaller screens */
+    flex-shrink: 0; /* Prevent footer from shrinking */
+    width: 100%; /* Full width */
+  }
+  
+  #footer h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #f2aa4c; /* Accent color for headings */
+  }
+  
+  #footer h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #f2aa4c; /* Accent color for main heading */
+  }
+  
+  #footer p {
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+    color: #dddddd; /* Softer text color */
+  }
+  
+  #footer a {
+    color: #f2aa4c; /* Links matching the accent color */
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin: 0.3rem 0;
+    transition: color 0.3s ease;
+  }
+  
+  #footer a:hover {
+    color: #ffffff; /* White on hover */
+  }
+  
+  /* Left Section */
+  .leftFooter {
+    flex: 1;
+    min-width: 300px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .leftFooter img {
+    width: 120px;
+    margin: 0.5rem 0.5rem 0 0;
+    transition: transform 0.3s ease;
+  }
+  
+  .leftFooter img:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+  }
+  
+  /* Middle Section */
+  .midFooter {
+    flex: 1;
+    min-width: 300px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .midFooter h1 {
+    font-size: 2.5rem;
+  }
+  
+  .midFooter p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  /* Right Section */
+  .rightFooter {
+    flex: 1;
+    min-width: 300px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .rightFooter a {
+    display: block;
+    margin: 0.2rem 0;
+    font-weight: 500;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    #footer {
+      flex-direction: column;
+      text-align: center;
+    }
+    .leftFooter, .midFooter, .rightFooter {
+      margin-bottom: 2rem;
+    }
+  }
+  

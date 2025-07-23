@@ -1,0 +1,26 @@
+
+Important packages installed
+bcryptjs - to hide user password in mongodb compass
+jsonwebtoken - 
+validator - to validate email email field should have email only
+nodemailer - to reset password when user forgets password
+cookie-parser - to store jsonwebtoken in the form of cookies
+packages installed in frontend directory
+1. npx create-react-app .
+2. npm start
+3. npm i axios react-alert-template-basic react-helmet react-redux redux redux-thunk redux-devtools-extension react-router-dom overlay-navbar// axios to fetch data from backend react-helmet to keep the title of each page differnt
+redux: redux is like a store which stores all required information and any componenet can access the information from that store
+
+// How JWT Works in Authentication
+Login:
+
+A user logs in by providing their credentials (e.g., email and password).
+The server verifies the credentials and generates a JWT with user-related data (e.g., id, role).
+Token Transmission:
+
+The server sends the token to the client (usually stored in a cookie or localStorage).
+Subsequent Requests:
+
+The client includes the JWT in the Authorization header (e.g., Bearer <token>).
+The server verifies the token using the secret key, ensuring it hasn't been tampered with.
+If valid, the server allows access to protected resources.

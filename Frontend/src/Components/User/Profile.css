@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* General Styling for the Profile Page */
+.profileContainer {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically on small screens */
+  align-items: center;
+  padding: 40px 20px;
+  /* Dark, sophisticated gradient background */
+  background: linear-gradient(135deg, #1A1A2E 0%, #2A0A4A 100%);
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #E0E0E0; /* Light grey for general text */
+  position: relative;
+  overflow: hidden; /* To contain pseudo-elements if any */
+}
+
+/* Subtle background overlay for visual texture */
+.profileContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top left, rgba(187, 134, 252, 0.05) 0%, transparent 40%),
+              radial-gradient(circle at bottom right, rgba(3, 218, 198, 0.05) 0%, transparent 40%);
+  z-index: 0;
+}
+
+/* Home Link Styling */
+.homeLink {
+  width: 100%;
+  max-width: 1000px;
+  padding: 15px 20px;
+  text-align: left;
+  margin-bottom: 20px;
+  position: relative; /* Ensure it's above the background overlay */
+  z-index: 1;
+}
+
+.homeLink a {
+  text-decoration: none;
+  color: #BB86FC; /* Bright violet for links */
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.homeLink a:hover {
+  color: #9A67EA; /* Slightly darker violet on hover */
+  transform: translateX(5px);
+}
+
+/* Profile Sections (Cards) */
+.profileContainer > div:first-of-type, /* My Profile, Edit Profile section */
+.profileContainer > div:last-of-type { /* User Details, Orders, Password section */
+  background: rgba(42, 42, 74, 0.85); /* Darker violet-tinged transparent background */
+  backdrop-filter: blur(20px); /* Glassmorphism effect */
+  border: 1px solid rgba(187, 134, 252, 0.2); /* Subtle violet border */
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5); /* Deep, soft shadow */
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1; /* Ensure cards are above background overlay */
+}
+
+/* Hover effect for cards */
+.profileContainer > div:first-of-type:hover,
+.profileContainer > div:last-of-type:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  border-color: rgba(3, 218, 198, 0.4); /* Highlight border on hover */
+}
+
+/* Shine effect on card hover */
+.profileContainer > div:first-of-type::before,
+.profileContainer > div:last-of-type::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease-out;
+  pointer-events: none;
+}
+
+.profileContainer > div:first-of-type:hover::before,
+.profileContainer > div:last-of-type:hover::before {
+  left: 100%;
+}
+
+/* Profile Heading */
+.profileContainer > div:first-of-type h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  /* Gradient for heading */
+  background: linear-gradient(90deg, #BB86FC, #03DAC6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  animation: slideInDown 0.8s ease-out;
+}
+
+/* Edit Profile Button */
+.profileContainer > div:first-of-type a {
+  display: inline-block;
+  background: linear-gradient(135deg, #03DAC6 0%, #00C49A 100%); /* Aqua/cyan gradient */
+  color: #1a1a2e; /* Dark text for light button */
+  padding: 12px 30px;
+  border-radius: 50px; /* Pill shape */
+  text-decoration: none;
+  font-size: 1.05em;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 20px rgba(3, 218, 198, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.profileContainer > div:first-of-type a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(3, 218, 198, 0.4);
+  filter: brightness(1.1); /* Slightly brighter on hover */
+}
+
+/* User Details Section */
+.profileContainer > div:last-of-type {
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* Space between detail items */
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.profileContainer > div:last-of-type > div {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.profileContainer > div:last-of-type h4 {
+  font-size: 1.1em;
+  color: #BB86FC; /* Violet for labels */
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.profileContainer > div:last-of-type p {
+  font-size: 1.2em;
+  color: #F0F0F0; /* Lighter text for values */
+  font-weight: 400;
+  word-wrap: break-word;
+  background: rgba(0, 0, 0, 0.1); /* Subtle dark background for text */
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(187, 134, 252, 0.1);
+}
+
+/* Action Links (My Orders, Change Password) */
+.profileContainer > div:last-of-type > div:last-of-type {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between action buttons */
+  margin-top: 20px;
+}
+
+.profileContainer > div:last-of-type > div:last-of-type a {
+  display: block; /* Make links take full width */
+  background: linear-gradient(135deg, #BB86FC 0%, #9A67EA 100%); /* Violet gradient */
+  color: #1a1a2e; /* Dark text for light button */
+  padding: 14px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.05em;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 20px rgba(187, 134, 252, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.profileContainer > div:last-of-type > div:last-of-type a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(187, 134, 252, 0.4);
+  filter: brightness(1.1);
+}
+
+/* Animations (from checkoutCombo.css) */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .profileContainer {
+    flex-direction: row; /* Side-by-side on larger screens */
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top */
+    gap: 40px; /* Space between the two main profile blocks */
+    padding: 60px 20px;
+  }
+
+  .profileContainer > div:first-of-type,
+  .profileContainer > div:last-of-type {
+    max-width: 450px; /* Adjust max-width for larger screens */
+    width: 48%; /* Take roughly half the width each */
+    margin-bottom: 0; /* Remove bottom margin when side-by-side */
+  }
+
+  .profileContainer > div:first-of-type h1 {
+    font-size: 3.5em; /* Larger heading on desktop */
+  }
+}
+
+@media (max-width: 480px) {
+  .profileContainer {
+    padding: 20px 10px;
+  }
+
+  .profileContainer > div:first-of-type,
+  .profileContainer > div:last-of-type {
+    padding: 25px;
+  }
+
+  .profileContainer > div:first-of-type h1 {
+    font-size: 2.2em;
+  }
+
+  .profileContainer > div:first-of-type a,
+  .profileContainer > div:last-of-type > div:last-of-type a {
+    padding: 10px 20px;
+    font-size: 1em;
+  }
+}

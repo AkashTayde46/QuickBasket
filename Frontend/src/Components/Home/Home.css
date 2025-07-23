@@ -1,0 +1,293 @@
+/* General styling for the home page */
+html {
+  scroll-behavior: smooth;
+}
+a {
+  text-decoration: none; /* Removes the underline from all links */
+  color: inherit; /* Ensures the text color matches its parent element */
+}
+
+.banner {
+ 
+ 
+    background-image: url('/src/Images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color:white;
+    text-align: center;
+    padding: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* ADD THIS */
+  
+
+    justify-content: flex-start; /* Push content to top */
+  
+}
+
+.banner h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.banner h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.banner a button {
+  background-color: #fff;
+  color: #ff6a00;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+}
+
+.banner a button:hover {
+  background-color: #ff6a00;
+  color: white;
+  transform: scale(1.1);
+  text-decoration: none;
+}
+
+.banner a button svg {
+  margin-left: 10px;
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
+}
+
+.banner a button:hover svg {
+  transform: translateX(5px);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .banner h2 {
+    font-size: 2.5rem;
+  }
+
+  .banner h3 {
+    font-size: 1.2rem;
+  }
+
+  .banner a button {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+}
+
+/* For large screens, adjust to fit the content */
+@media (min-width: 1024px) {
+  .banner h2 {
+    font-size: 3.5rem;
+  }
+
+  .banner h3 {
+    font-size: 1.8rem;
+  }
+
+  .banner a button {
+    font-size: 1.4rem;
+  }
+}
+/* Update your existing Home.css with these styles */
+
+.homeHeading {
+    font-size: 3rem; /* Larger and more impactful */
+    font-weight: 700;
+    text-align: center;
+    margin: 80px auto 50px auto; /* More top margin to separate from banner */
+    width: auto; /* Let the content determine width */
+    padding: 0; /* Remove padding */
+    border-bottom: none; /* Remove the old border */
+    /* Gradient for heading */
+    background: linear-gradient(90deg, #BB86FC, #03DAC6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    position: relative; /* For z-index if needed */
+    z-index: 1;
+    /* You can add an animation from previous suggestions here if you like */
+    /* animation: fadeIn 1.5s ease-out 0.8s both; */
+}
+
+.container {
+    display: grid; /* Changed to grid for better product arrangement */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Flexible columns for product cards */
+    gap: 35px; /* Increased gap between cards */
+    max-width: 1200px; /* Limit width for large screens */
+    width: 100%; /* Take full width of its parent within max-width */
+    padding: 0 20px 80px 20px; /* Padding for the container */
+    box-sizing: border-box; /* Include padding in width */
+    margin: 0 auto; /* Center the container with auto margins */
+    background-color: transparent; /* Remove aqua background */
+    justify-content: center; /* Still justify content to center */
+    flex-wrap: wrap; /* Keep flex-wrap for older browsers or if you switch back to flex */
+    position: relative;
+    z-index: 1;
+    /* You can add an animation from previous suggestions here if you like */
+    /* animation: fadeInUpGrid 1.5s ease-out 1s both; */
+}
+
+.productCard {
+    /* Glassmorphism background */
+    background: rgba(42, 42, 74, 0.6);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(187, 134, 252, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    padding: 25px; /* Adjust padding */
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother transition */
+    position: relative;
+    overflow: hidden;
+    color: #f0f0f0; /* Overall text color for the card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: auto; /* Let grid handle width, or set a min-width */
+    margin: 0; /* Remove VMAX margin, gap handles spacing now */
+    padding-bottom: 25px; /* Consistent padding at bottom */
+    text-decoration: none; /* Ensure no underline for links */
+}
+
+.productCard > img {
+    width: 100%; /* Image fills card width */
+    max-height: 200px; /* Max height to prevent oversized images */
+    object-fit: contain; /* Contain image within bounds */
+    border-radius: 12px; /* Rounded corners for image */
+    margin-bottom: 20px; /* Space below image */
+    transition: transform 0.3s ease; /* Smooth zoom on hover */
+    display: block; /* Ensure image is block level */
+}
+
+.productCard:hover img {
+    transform: scale(1.05); /* Slight zoom on image hover */
+}
+
+.productCard > p { /* Product Name - Assuming this is the name */
+    font-size: 1.3em; /* Use em for relative sizing */
+    font-weight: 600;
+    color: #F0F0F0; /* **Bright white for visibility** */
+    margin: 0 0 10px 0; /* Adjust margin for name */
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis for long names */
+    width: 100%; /* Essential for ellipsis to work */
+}
+
+.productCard > span { /* This is likely the Price */
+    font-size: 1.6em; /* Larger font for price */
+    font-weight: 700;
+    color: #03DAC6; /* **Vibrant aqua for price** */
+    margin-top: 10px; /* Space above price */
+    margin-bottom: 0; /* Remove bottom margin */
+    /* If you have a separate span for reviews, you'd target it specifically */
+}
+
+/* Assuming a div wrapping rating and reviews count within productCard */
+.productCard > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px; /* Space below ratings */
+    /* Remove 'display: block' from previous 600px media query if it interferes */
+}
+
+/* ProductCard Hover Effect */
+.productCard:hover {
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.6); /* More pronounced shadow */
+    transform: translateY(-8px) scale(1.02); /* More dynamic lift and slight scale */
+    border-color: rgba(3, 218, 198, 0.3); /* Change border color on hover */
+    background: rgba(42, 42, 74, 0.75); /* Slightly less opaque on hover */
+}
+
+/* Media Queries */
+@media screen and (max-width: 1024px) { /* Adjust for larger tablets */
+    .homeHeading {
+        font-size: 2.5rem;
+        margin: 60px auto 40px auto;
+    }
+    .container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 30px;
+        padding: 0 15px 60px 15px;
+    }
+    .productCard {
+        padding: 20px;
+    }
+    .productCard > img {
+        max-height: 180px;
+    }
+}
+
+@media screen and (max-width: 768px) { /* Tablets */
+    .homeHeading {
+        font-size: 2rem;
+        margin: 50px auto 30px auto;
+    }
+    .container {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 25px;
+        padding: 0 10px 50px 10px;
+    }
+    .productCard > p {
+        font-size: 1.1em; /* Adjusted to em */
+    }
+    .productCard > span { /* Price */
+        font-size: 1.4em; /* Adjusted to em */
+    }
+}
+
+@media screen and (max-width: 600px) { /* Mobile */
+    .homeHeading {
+        font-size: 1.8rem;
+        margin: 40px auto 25px auto;
+    }
+    .container {
+        grid-template-columns: 1fr; /* Single column for very small screens */
+        gap: 20px;
+        padding: 0 10px 40px 10px;
+    }
+    .productCard {
+        width: 85%; /* Make card wider on small screens */
+        max-width: 350px; /* Cap width for larger mobile devices */
+        margin: auto; /* Center the card */
+    }
+    .productCard > p { /* Product Name */
+        font-size: 1.2em; /* Adjusted font size for mobile */
+    }
+    .productCard > div { /* Ratings div */
+        margin: 0 0 10px 0; /* Adjust margin */
+        display: flex; /* Keep it flex for consistent layout */
+        justify-content: center;
+    }
+    .productCard > span { /* Price */
+        font-size: 1.2em; /* Adjusted font size for mobile */
+    }
+    .productCard > div > span { /* Reviews count, assuming it's a span inside the rating div */
+        margin: 0 0.5em; /* Use em for consistency */
+        font-size: 0.9em; /* Smaller font for reviews count */
+        color: #BB86FC; /* Violet for reviews count */
+        font-weight: 500;
+    }
+    .productCard img {
+        max-height: 150px;
+    }
+}

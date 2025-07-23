@@ -1,0 +1,127 @@
+/* Container styles */
+.cartPage {
+  width: 90%;
+  margin: auto;
+  padding: 2vmax 0;
+}
+
+.cartHeader {
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  background-color: tomato;
+  color: white;
+  padding: 1vmax;
+  font: 600 1.2vmax "Roboto";
+}
+
+.cartContainer {
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  align-items: center;
+  padding: 1vmax 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.cartInput {
+  display: flex;
+  align-items: center;
+  gap: 0.5vmax;
+}
+
+.cartInput button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: #282c34;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.cartInput input {
+  width: 40px;
+  text-align: center;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.cartSubtotal {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Gross Total Section */
+.cartGrossProfit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 2vmax 0;
+}
+
+.cartGrossProfitBox {
+  display: flex;
+  justify-content: space-between;
+  width: 20vmax;
+  font-size: 1.2rem;
+  margin-bottom: 1vmax;
+}
+
+.checkOutBtn {
+  display: flex;
+  justify-content: flex-end;
+  width: 20vmax;
+}
+
+.checkOutBtn button {
+  padding: 0.7vmax 1.5vmax;
+  background-color: crimson;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Empty Cart */
+.emptyCart {
+  text-align: center;
+  padding: 5vmax 0;
+  font-family: "Roboto";
+}
+
+.emptyCart svg {
+  font-size: 5vmax;
+  margin-bottom: 1vmax;
+  color: gray;
+}
+
+.emptyCart p {
+  font-size: 1.5vmax;
+  margin-bottom: 1vmax;
+}
+
+.emptyCart a {
+  text-decoration: none;
+  background-color: tomato;
+  padding: 0.8vmax 1.5vmax;
+  color: white;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .cartHeader,
+  .cartContainer {
+    grid-template-columns: 2fr 1fr 1fr;
+    font-size: 0.9rem;
+  }
+
+  .cartGrossProfitBox,
+  .checkOutBtn {
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 1vmax;
+  }
+}
