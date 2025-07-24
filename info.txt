@@ -24,3 +24,11 @@ Subsequent Requests:
 The client includes the JWT in the Authorization header (e.g., Bearer <token>).
 The server verifies the token using the secret key, ensuring it hasn't been tampered with.
 If valid, the server allows access to protected resources.
+
+
+Add the environment variable to .env (for local dev):
+
+env
+Copy
+Edit
+VITE_API_BASE_URL=http://localhost:5000

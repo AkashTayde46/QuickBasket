@@ -74,7 +74,8 @@ import axios from "axios";
 // Add to Cart
 export const addItemsToCart = (id, quantity) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.get(`/api/v1/product/${id}`);
+    const { data } = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/product/${id}`);
+
 
     if (quantity > data.product.Stock) {
       return alert("Quantity exceeds available stock!");
