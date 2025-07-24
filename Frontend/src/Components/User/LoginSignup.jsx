@@ -7,7 +7,7 @@
 // import { useDispatch, useSelector } from "react-redux";
 // import { clearErrors, login } from "../../action/userAction";
 // import { useAlert } from "react-alert";
-// import Loader from '../layout/Loader/Loader'
+// import Loader from '../Layout/Loader/Loader'
 // const LoginSignup = () => {
 //   const dispatch = useDispatch();
 //   const alert = useAlert();

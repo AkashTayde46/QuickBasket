@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import MetaData from "../layout/MetaData";
+import MetaData from "../Layout/MetaData";
 import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 import SideBar from "./Sidebar";
@@ -9,7 +9,7 @@ import {
   updateOrder,
 } from "../../action/orderAction";
 import { useSelector, useDispatch } from "react-redux";
-import Loader from "../layout/Loader/Loader";
+import Loader from "../Layout/Loader/Loader";
 import { useAlert } from "react-alert";
 import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import { Button } from "@material-ui/core";

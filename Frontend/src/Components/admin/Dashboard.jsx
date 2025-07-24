@@ -8,7 +8,7 @@
 // import { useSelector, useDispatch } from "react-redux";
 // import { getAdminProduct } from "../../action/productAction";
 // import { getAllUsers } from "../../action/userAction.jsx";
-// import MetaData from "../layout/MetaData";
+// import MetaData from "../Layout/MetaData";
 
 // ChartJS.register(...registerables);
 
@@ -107,7 +107,7 @@
 // import { useSelector, useDispatch } from "react-redux";
 // import { getAdminProduct } from "../../action/productAction";
 // import { getAllUsers } from "../../action/userAction.jsx";
-// import MetaData from "../layout/MetaData";
+// import MetaData from "../Layout/MetaData";
 
 // const Dashboard = () => {
 //   const dispatch = useDispatch();
@@ -213,7 +213,7 @@ import { Doughnut, Line } from "react-chartjs-2";
 import { useSelector, useDispatch } from "react-redux";
 import { getAdminProduct } from "../../action/productAction";
 import { getAllUsers } from "../../action/userAction.jsx";
-import MetaData from "../layout/MetaData";
+import MetaData from "../Layout/MetaData";
 
 // Chart.js Registration
 import {

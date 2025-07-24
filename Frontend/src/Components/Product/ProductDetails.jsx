@@ -5,7 +5,7 @@
 // import { getProductDetails } from "../../action/productAction";
 // import ReactStars from "react-rating-stars-component";
 // import MetaData from "../Layout/MetaData";
-// import Loader from "../layout/Loader/Loader";
+// import Loader from "../Layout/Loader/Loader";
 // import "./ProductDetails.css";
 // import {useAlert} from "react-alert"
 // import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from "@material-ui/core";
@@ -194,7 +194,7 @@ import { useParams } from "react-router-dom";
 import { getProductDetails, clearErrors } from "../../action/productAction";
 import ReactStars from "react-rating-stars-component";
 import MetaData from "../Layout/MetaData";
-import Loader from "../layout/Loader/Loader";
+import Loader from "../Layout/Loader/Loader";
 import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { addItemsToCart } from "../../action/cartAction";

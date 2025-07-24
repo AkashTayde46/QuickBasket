@@ -1,11 +1,11 @@
 import React, { Fragment, useEffect } from "react";
 import "./orderDetails.css";
 import { useSelector, useDispatch } from "react-redux";
-import MetaData from "../layout/MetaData";
+import MetaData from "../Layout/MetaData";
 import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 import { getOrderDetails, clearErrors } from "../../action/orderAction";
-import Loader from "../layout/Loader/Loader";
+import Loader from "../Layout/Loader/Loader";
 import { useAlert } from "react-alert";
 
 const OrderDetails = ({ match }) => {

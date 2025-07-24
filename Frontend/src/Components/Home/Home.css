@@ -275,7 +275,7 @@ a {
     }
     .productCard > div { /* Ratings div */
         margin: 0 0 10px 0; /* Adjust margin */
-        display: flex; /* Keep it flex for consistent layout */
+        display: flex; /* Keep it flex for consistent Layout */
         justify-content: center;
     }
     .productCard > span { /* Price */

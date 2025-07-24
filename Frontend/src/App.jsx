@@ -7,7 +7,7 @@
 // import axios from "axios";
 // import ProductDetails from "./Components/Product/ProductDetails"
 // import Products from './Components/Product/Products';
-// import './App.css'; // Add the styles to control layout
+// import './App.css'; // Add the styles to control Layout
 // import Search from './Components/Product/Search';
 // import LoginSignup from './Components/User/LoginSignup';
 // import store from "./store"

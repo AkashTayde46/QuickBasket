@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Products.css";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, getProduct } from "../../action/productAction";
-import Loader from "../layout/Loader/Loader";
+import Loader from "../Layout/Loader/Loader";
 import { useParams } from "react-router-dom";
 import Slider from "@material-ui/core/Slider";
 import Product from "../Home/Product"; // Make sure this path is correct for your Product component

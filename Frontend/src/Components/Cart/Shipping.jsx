@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import "./Shipping.css";
 import { useSelector, useDispatch } from "react-redux";
 import { saveShippingInfo } from "../../action/cartAction";
-import MetaData from "../layout/MetaData";
+import MetaData from "../Layout/MetaData";
 import {
   PinDrop as PinDropIcon,
   Home as HomeIcon,

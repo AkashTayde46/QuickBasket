@@ -5,7 +5,7 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, updateProfile, loadUser } from "../../action/userAction";
 import { useAlert } from "react-alert";
-import Loader from "../layout/Loader/Loader";
+import Loader from "../Layout/Loader/Loader";
 
 const UpdateProfile = () => {
   const dispatch = useDispatch();

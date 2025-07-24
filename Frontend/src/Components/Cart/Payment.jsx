@@ -1,7 +1,7 @@
 // import React, { Fragment, useEffect, useRef } from "react";
 // import CheckoutSteps from "../Cart/CheckoutSteps";
 // import { useSelector, useDispatch } from "react-redux";
-// import MetaData from "../layout/MetaData";
+// import MetaData from "../Layout/MetaData";
 // import { Typography } from "@material-ui/core";
 // import { useAlert } from "react-alert";
 // import {
@@ -150,7 +150,7 @@
 
 import React, { Fragment, useEffect, useRef } from "react";
 import CheckoutSteps from "../Cart/CheckoutSteps";
-import MetaData from "../layout/MetaData";
+import MetaData from "../Layout/MetaData";
 import { useSelector, useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
 import {
