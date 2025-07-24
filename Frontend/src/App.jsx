@@ -816,12 +816,12 @@ import Logout from "./Components/User/Logout";
 import Sidebar from "./Components/admin/Sidebar";
 import ProductList from "./Components/admin/ProductList";
 import UserOptions from "./Components/Layout/Header/userOption";
-import PaymentWrapper from "./Components/Cart/PaymentWrapper";
+//import PaymentWrapper from "./Components/Cart/PaymentWrapper.jsx";
 import { useDispatch } from "react-redux";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import StripeWrapper from "./Components/Cart/StripeWrapper"
-import Payment from "./Components/Cart/Payment";
+//import { Elements } from "@stripe/react-stripe-js";
+//import { loadStripe } from "@stripe/stripe-js";
+//import StripeWrapper from "./Components/Cart/StripeWrapper"
+//import Payment from "./Components/Cart/Payment";
 import LoadPayment from "./Components/Cart/LoadPayment";
 import ComboBuilder from "./Components/Product/ComboBuilder";
 import CheckoutCombo from "./Components/Product/CheckoutCombo"
