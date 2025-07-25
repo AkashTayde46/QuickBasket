@@ -63,7 +63,7 @@ const bodyParser = require("body-parser");
 
 // Middlewares
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "https://quick-basket-one.vercel.app/",
   credentials: true
 }));
 app.use(express.json());

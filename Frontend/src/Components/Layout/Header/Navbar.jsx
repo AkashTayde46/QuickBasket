@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <NavLink to="/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTonOQvb_AbqTFMwTbBfIldtFvPhXQBQsCmfw&s" alt="" /></NavLink>
+        
       </div>
 
       <div className="navbar-links">
