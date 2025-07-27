@@ -1,14 +1,13 @@
-// Create Token and saving in cookie
-
 const sendToken = (user, statusCode, res) => {
   const token = user.getJWTToken();
 
-  // options for cookie
+  const isProd = process.env.NODE_ENV === "production";
+
   const options = {
-    expires: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000), // 5 days
+    expires: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000),
     httpOnly: true,
-    secure: false, // set to true if using HTTPS
-    sameSite: "Lax", // use "None" + secure:true if cross-site and HTTPS
+    secure: isProd,           // ✅ true in production (Render uses HTTPS)
+    sameSite: isProd ? "None" : "Lax", // ✅ "None" for cross-origin
   };
 
   res.status(statusCode)
@@ -19,5 +18,3 @@ const sendToken = (user, statusCode, res) => {
       token,
     });
 };
-
-module.exports = sendToken;
