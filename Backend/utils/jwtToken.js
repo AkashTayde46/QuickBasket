@@ -1,20 +1,20 @@
+// backend/utils/jwtToken.js
+
 const sendToken = (user, statusCode, res) => {
   const token = user.getJWTToken();
 
-  const isProd = process.env.NODE_ENV === "production";
-
   const options = {
-    expires: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000),
+    expires: new Date(Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
     httpOnly: true,
-    secure: isProd,           // ✅ true in production (Render uses HTTPS)
-    sameSite: isProd ? "None" : "Lax", // ✅ "None" for cross-origin
+    sameSite: "none",
+    secure: true,
   };
 
-  res.status(statusCode)
-    .cookie("token", token, options)
-    .json({
-      success: true,
-      user,
-      token,
-    });
+  res.status(statusCode).cookie("token", token, options).json({
+    success: true,
+    user,
+    token,
+  });
 };
+
+module.exports = sendToken;

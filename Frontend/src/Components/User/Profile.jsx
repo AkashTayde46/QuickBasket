@@ -53,6 +53,10 @@ const Profile = () => {
           <div>
             <Link to="/orders">My Orders</Link>
             <Link to="/password/update">Change Password</Link>
+            <a onClick={handleLogout} style={{ cursor: "pointer", color: "blue" }}>
+  Logout
+</a>
+
            
           </div>
         </div>

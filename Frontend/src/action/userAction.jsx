@@ -63,7 +63,7 @@ export const login = (email, password) => async (dispatch) => {
     });
 
     localStorage.removeItem("shippingInfo");
-    localStorage.setItem("token", data.token);
+    
   } catch (error) {
     dispatch({
       type: LOGIN_FAIL,
@@ -119,11 +119,14 @@ export const logout = () => async (dispatch) => {
       withCredentials: true,
     });
 
+    localStorage.removeItem("token"); // Add this line
+
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
-    dispatch({ type: LOGOUT_FAIL, payload: error.response.data.message });
+    dispatch({ type: LOGOUT_FAIL, payload: error.response?.data?.message || error.message });
   }
 };
+
 
 // Update Profile
 export const updateProfile = (userData) => async (dispatch) => {

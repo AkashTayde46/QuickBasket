@@ -1,7 +1,7 @@
 const ErrorHandler = require("../utils/errorhandler")
 const catchAsyncError = require("../middleware/catchAsyncError")
 const User = require("../models/userModels");
-const sendToken = require("../utils/jwtToken");
+const {sendToken} = require("../utils/jwtToken");
 const sendEmail =  require("../utils/sendEmail") 
 const cloudinary = require("cloudinary");
 const crypto = require("crypto")
@@ -12,7 +12,7 @@ const mongoose = require("mongoose");
 exports.registerUser = catchAsyncError(async (req, res, next) => {
     
     const { name, email, password } = req.body;
-
+console.log("sendToken loaded:", typeof sendToken);
   const user = await User.create({
     name,
     email,
@@ -21,6 +21,8 @@ exports.registerUser = catchAsyncError(async (req, res, next) => {
   });
   
   sendToken(user, 201, res);
+    console.log("✅ User created:", user);
+
 });
 
 
