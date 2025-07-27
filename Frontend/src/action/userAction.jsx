@@ -50,7 +50,11 @@ export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: LOGIN_REQUEST });
 
-    const config = { headers: { "Content-Type": "application/json" } };
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true, // ✅ This is required to handle cookies
+    };
+
     const { data } = await axios.post(
       `${backendUrl}/api/v1/login`,
       { email, password },
@@ -77,7 +81,11 @@ export const register = (userData) => async (dispatch) => {
   try {
     dispatch({ type: REGISTER_USER_REQUEST });
 
-    const config = { headers: { "Content-Type": "application/json" } };
+     const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true, // ✅ this is required!
+    };
+
     const { data } = await axios.post(
       `${backendUrl}/api/v1/register`,
       userData,
