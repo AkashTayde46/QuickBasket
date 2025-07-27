@@ -1,5 +1,3 @@
-// utils/sendToken.js
-
 const sendToken = (user, statusCode, res) => {
   const token = user.getJWTToken();
 
@@ -10,6 +8,7 @@ const sendToken = (user, statusCode, res) => {
     httpOnly: true,
     secure: isProd,
     sameSite: isProd ? "None" : "Lax",
+    partitioned: isProd, // ✅ fix: required for cross-site in Chrome etc
   };
 
   res.status(statusCode)
