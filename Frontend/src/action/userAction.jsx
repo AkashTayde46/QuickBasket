@@ -50,9 +50,11 @@ export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: LOGIN_REQUEST });
 
+    console.log("🔐 Attempting login with:", { email, backendUrl });
+
     const config = {
       headers: { "Content-Type": "application/json" },
-      withCredentials: true, // ✅ This is required to handle cookies
+      withCredentials: true,
     };
 
     const { data } = await axios.post(
@@ -61,17 +63,23 @@ export const login = (email, password) => async (dispatch) => {
       config
     );
 
+    console.log("✅ Login successful:", data);
+
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: { user: data.user, token: data.token },
+      payload: data.user,
     });
 
+    // Store user data in localStorage as backup
+    localStorage.setItem("user", JSON.stringify(data.user));
     localStorage.removeItem("shippingInfo");
     
   } catch (error) {
+    console.error("❌ Login error:", error.response?.data || error.message);
+    
     dispatch({
       type: LOGIN_FAIL,
-      payload: error.response ? error.response.data.message : error.message,
+      payload: error.response?.data?.message || error.message,
     });
   }
 };
@@ -83,7 +91,7 @@ export const register = (userData) => async (dispatch) => {
 
      const config = {
       headers: { "Content-Type": "application/json" },
-      withCredentials: true, // ✅ this is required!
+      withCredentials: true,
     };
 
     const { data } = await axios.post(

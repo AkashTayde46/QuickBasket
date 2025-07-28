@@ -42,14 +42,15 @@ import {
 
   } from "../constant/userConstant";
   
-  // const initialState = {
-  //   user: JSON.parse(localStorage.getItem("user")) || null,
-  //   isAuthenticated: !!localStorage.getItem("user"),
-  //   loading: false,
-  //   error: null,
-  // };
+  // Initialize state with user from localStorage if available
+  const initialState = {
+    user: JSON.parse(localStorage.getItem("user")) || null,
+    isAuthenticated: !!localStorage.getItem("user"),
+    loading: false,
+    error: null,
+  };
   
-  export const userReducer = (state = { user: {} }, action) => {
+  export const userReducer = (state = initialState, action) => {
     switch (action.type) {
       case LOGIN_REQUEST:
       case REGISTER_USER_REQUEST:
@@ -64,7 +65,7 @@ import {
       case REGISTER_USER_SUCCESS:
       case LOAD_USER_SUCCESS:
         // Save user to localStorage
-        // localStorage.setItem("user", JSON.stringify(action.payload));
+        localStorage.setItem("user", JSON.stringify(action.payload));
         return {
           ...state,
           loading: false,
@@ -75,7 +76,7 @@ import {
   
       case LOGOUT_SUCCESS:
         // Remove user from localStorage
-        // localStorage.removeItem("user");
+        localStorage.removeItem("user");
         return {
           ...state,
           loading: false,
@@ -86,7 +87,7 @@ import {
       case LOGIN_FAIL:
       case REGISTER_USER_FAIL:
       case LOAD_USER_FAIL:
-        case LOGOUT_FAIL:
+      case LOGOUT_FAIL:
         return {
           ...state,
           loading: false,

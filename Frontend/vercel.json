@@ -1,5 +1,8 @@
 {
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
-  ]
+  ],
+  "env": {
+    "VITE_API_BASE_URL": "https://quickbasket-swwy.onrender.com"
+  }
 }

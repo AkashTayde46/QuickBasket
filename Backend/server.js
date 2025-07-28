@@ -4,7 +4,7 @@ const app = require("./app");
 
 // dotenv.config({path: "Backend/config/config.env"});
 // const path = require("path");
-// dotenv.config({ path: path.resolve(__dirname, "config/config.env") });
+// dotenv.config({ path: path.resolve(__dirname, "config.config.env") });
 
 const connectDatabase = require("./config/database");
 // console.log("PORT from .env:", process.env.PORT);
@@ -22,10 +22,11 @@ process.on("uncaughtException", (err) => {
 connectDatabase();
 
 
- const PORT =  4000;
+ const PORT = process.env.PORT || 4000;
 
 const server = app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${process.env.PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
      
     
 });

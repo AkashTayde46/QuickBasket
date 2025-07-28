@@ -8,7 +8,8 @@ const sendToken = (user, statusCode, res) => {
     httpOnly: true,
     secure: isProd,
     sameSite: isProd ? "None" : "Lax",
-    partitioned: isProd, // ✅ fix: required for cross-site in Chrome etc
+    domain: isProd ? undefined : undefined, // Let browser set domain
+    path: "/",
   };
 
   res.status(statusCode)
