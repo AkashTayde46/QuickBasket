@@ -825,6 +825,8 @@ import { useDispatch } from "react-redux";
 import LoadPayment from "./Components/Cart/LoadPayment";
 import ComboBuilder from "./Components/Product/ComboBuilder";
 import CheckoutCombo from "./Components/Product/CheckoutCombo"
+const backendUrl = import.meta.env.VITE_API_BASE_URL;
+
 function App() {
   // const[stripeApiKey,setStripeApiKey] = useState("");
   // async function getStripeApiKey(){
@@ -848,9 +850,9 @@ function App() {
   // ✅ Corrected: properly extract `data` from axios response object
   async function getStripeApiKey() {
     try {
-      const { data } = await axios.get("/api/v1/stripeapikey", {
-        withCredentials: true, // in case your route is protected or needs cookies
-      });
+    const { data } = await axios.get(`${backendUrl}/api/v1/stripeapikey`, {
+      withCredentials: true,
+    });
       setStripeApiKey(data.stripeApiKey);
     } catch (error) {
       console.error("Error fetching Stripe API key:", error);

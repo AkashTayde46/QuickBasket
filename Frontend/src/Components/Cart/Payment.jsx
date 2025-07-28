@@ -168,7 +168,7 @@ import { createOrder, clearErrors } from "../../action/orderAction";
 import "./payment.css";
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-
+const backendUrl = import.meta.env.VITE_API_BASE_URL;
 const Payment = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -206,11 +206,15 @@ if (!orderInfo) {
     payBtn.current.disabled = true;
 
     try {
-      const { data } = await axios.post(
-        "/api/v1/payment/process",
-        paymentData,
-        { headers: { "Content-Type": "application/json" } }
-      );
+     const { data } = await axios.post(
+  `${backendUrl}/api/v1/payment/process`,
+  paymentData,
+  {
+    headers: { "Content-Type": "application/json" },
+    withCredentials: true, // if cookies/session auth is required
+  }
+);
+
       const client_secret = data.client_secret;
 
       if (!stripe || !elements) {
