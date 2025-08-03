@@ -239,7 +239,7 @@ export const getAllUsers = () => async (dispatch) => {
 
     dispatch({ type: ALL_USERS_SUCCESS, payload: data.users });
   } catch (error) {
-    dispatch({ type: ALL_USERS_FAIL, payload: error.response.data.message });
+    dispatch({ type: ALL_USERS_FAIL, payload: Array.isArray(data.users) ? data.users : [], });
   }
 };
 

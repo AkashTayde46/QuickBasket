@@ -83,7 +83,9 @@ export const getAdminProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
 
-    const { data } = await axios.get(`${API}/api/v1/admin/products`);
+    const { data } = await axios.get(`${API}/api/v1/admin/products`, {
+      withCredentials: true,
+    });
 
     dispatch({
       type: ADMIN_PRODUCT_SUCCESS,
@@ -104,6 +106,7 @@ export const createProduct = (productData) => async (dispatch) => {
 
     const config = {
       headers: { "Content-Type": "application/json" },
+      withCredentials: true,
     };
 
     const { data } = await axios.post(
@@ -129,7 +132,9 @@ export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
 
-    const { data } = await axios.delete(`${API}/api/v1/product/${id}`);
+    const config = { withCredentials: true };
+
+    const { data } = await axios.delete(`${API}/api/v1/product/${id}`, config);
 
     dispatch({
       type: DELETE_PRODUCT_SUCCESS,
@@ -150,6 +155,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
 
     const config = {
       headers: { "Content-Type": "application/json" },
+      withCredentials: true,
     };
 
     const { data } = await axios.put(
@@ -177,6 +183,7 @@ export const newReview = (reviewData) => async (dispatch) => {
 
     const config = {
       headers: { "Content-Type": "application/json" },
+      withCredentials: true,
     };
 
     const { data } = await axios.put(`${API}/api/v1/review`, reviewData, config);
@@ -198,7 +205,9 @@ export const getAllReviews = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_REVIEW_REQUEST });
 
-    const { data } = await axios.get(`${API}/api/v1/reviews?id=${id}`);
+    const { data } = await axios.get(`${API}/api/v1/reviews?id=${id}`, {
+      withCredentials: true,
+    });
 
     dispatch({
       type: ALL_REVIEW_SUCCESS,
@@ -217,8 +226,11 @@ export const deleteReviews = (reviewId, productId) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_REVIEW_REQUEST });
 
+    const config = { withCredentials: true };
+
     const { data } = await axios.delete(
-      `${API}/api/v1/reviews?id=${reviewId}&productId=${productId}`
+      `${API}/api/v1/reviews?id=${reviewId}&productId=${productId}`,
+      config
     );
 
     dispatch({

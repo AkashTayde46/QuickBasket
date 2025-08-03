@@ -22,9 +22,9 @@ process.on("uncaughtException", (err) => {
 connectDatabase();
 
 
- const PORT = process.env.PORT || 4000;
+ const PORT = process.env.PORT || 5000;
 
-const server = app.listen(PORT, () => {
+const server = app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on http://localhost:${PORT}`);
     console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
      
@@ -35,8 +35,10 @@ const server = app.listen(PORT, () => {
 server.on("error", (err) => {
     if (err.code === "EACCES") {
         console.error(`Permission denied on port ${PORT}. Use another port or run with elevated privileges.`);
+        console.error(`Try changing PORT in config1.env to 8000, 8080, or 9000`);
     } else if (err.code === "EADDRINUSE") {
         console.error(`Port ${PORT} is already in use. Choose a different port.`);
+        console.error(`Try changing PORT in config1.env to 8000, 8080, or 9000`);
     } else {
         console.error(`Server error: ${err.message}`);
     }

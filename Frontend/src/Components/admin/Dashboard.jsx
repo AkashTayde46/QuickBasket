@@ -245,14 +245,6 @@ const Dashboard = () => {
   const { users } = useSelector((state) => state.allUsers);
   const { user, isAuthenticated } = useSelector((state) => state.user);
 
-  let outOfStock = 0;
-
-  products?.forEach((item) => {
-    if (item.Stock === 0) {
-      outOfStock += 1;
-    }
-  });
-
   useEffect(() => {
     if (!isAuthenticated) {
       navigate("/login");
@@ -264,13 +256,18 @@ const Dashboard = () => {
       dispatch(getAdminProduct());
       dispatch(getAllUsers());
     }
-
-    // Cleanup charts on unmount
-    return () => {
-      ChartJS.getChart("lineChart")?.destroy();
-      ChartJS.getChart("doughnutChart")?.destroy();
-    };
   }, [dispatch, isAuthenticated, navigate, user]);
+
+  // Fallbacks to prevent crash
+  const totalProducts = products?.length || 0;
+  const totalUsers = users?.length || 0;
+
+  let outOfStock = 0;
+  products?.forEach((item) => {
+    if (item.Stock === 0) {
+      outOfStock += 1;
+    }
+  });
 
   const lineState = useMemo(
     () => ({
@@ -280,7 +277,7 @@ const Dashboard = () => {
           label: "TOTAL AMOUNT",
           backgroundColor: ["tomato"],
           hoverBackgroundColor: ["rgb(197, 72, 49)"],
-          data: [0, 0],
+          data: [0, 0], // Hardcoded, update if needed
         },
       ],
     }),
@@ -294,12 +291,15 @@ const Dashboard = () => {
         {
           backgroundColor: ["#00A6B4", "#6800B4"],
           hoverBackgroundColor: ["#4B5000", "#35014F"],
-          data: [outOfStock, products.length - outOfStock],
+          data: [outOfStock, totalProducts - outOfStock],
         },
       ],
     }),
-    [outOfStock, products.length]
+    [outOfStock, totalProducts]
   );
+
+  // Handle loading or missing data
+  const loading = !products || !users;
 
   return (
     <div className="dashboard">
@@ -318,22 +318,28 @@ const Dashboard = () => {
           <div className="dashboardSummaryBox2">
             <Link to="/admin/product">
               <p>Product</p>
-              <p>{products?.length}</p>
+              <p>{totalProducts}</p>
             </Link>
             <Link to="/admin/users">
               <p>Users</p>
-              <p>{users?.length}</p>
+              <p>{totalUsers}</p>
             </Link>
           </div>
         </div>
 
-        <div className="lineChart">
-          <Line key={`line-${outOfStock}`} id="lineChart" data={lineState} />
-        </div>
+        {!loading ? (
+          <>
+            <div className="lineChart">
+              <Line data={lineState} />
+            </div>
 
-        <div className="doughnutChart">
-          <Doughnut key={`doughnut-${outOfStock}`} id="doughnutChart" data={doughnutState} />
-        </div>
+            <div className="doughnutChart">
+              <Doughnut data={doughnutState} />
+            </div>
+          </>
+        ) : (
+          <p>Loading dashboard data...</p>
+        )}
       </div>
     </div>
   );

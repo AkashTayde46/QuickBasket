@@ -67,6 +67,7 @@ const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
   "http://localhost:4173", // Vite preview port
+  "http://localhost:49152", // Backend port
   process.env.FRONTEND_URL // Allow environment variable for frontend URL
 ].filter(Boolean); // Remove any undefined values
 
