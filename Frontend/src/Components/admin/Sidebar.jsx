@@ -25,7 +25,7 @@ const Sidebar = () => {
     { to: "/admin/dashboard", icon: <DashboardIcon />, label: "Dashboard" },
     { to: "/admin/orders", icon: <ListAltIcon />, label: "Orders" },
     { to: "/admin/users", icon: <PeopleIcon />, label: "Users" },
-    { to: "/admin/reviews", icon: <RateReviewIcon />, label: "Reviews" },
+   
   ];
 
   // State for managing the "Products" accordion toggle

@@ -204,6 +204,150 @@
 
 
 
+// import React, { useEffect, useMemo } from "react";
+// import Sidebar from "./Sidebar.jsx";
+// import "./dashboard.css";
+// import { Typography } from "@material-ui/core";
+// import { Link, useNavigate } from "react-router-dom";
+// import { Doughnut, Line } from "react-chartjs-2";
+// import { useSelector, useDispatch } from "react-redux";
+// import { getAdminProduct } from "../../action/productAction";
+// import { getAllUsers } from "../../action/userAction.jsx";
+// import MetaData from "../Layout/MetaData";
+
+// // Chart.js Registration
+// import {
+//   Chart as ChartJS,
+//   CategoryScale,
+//   LinearScale,
+//   PointElement,
+//   LineElement,
+//   ArcElement,
+//   Tooltip,
+//   Legend,
+// } from "chart.js";
+
+// ChartJS.register(
+//   CategoryScale,
+//   LinearScale,
+//   PointElement,
+//   LineElement,
+//   ArcElement,
+//   Tooltip,
+//   Legend
+// );
+
+// const Dashboard = () => {
+//   const dispatch = useDispatch();
+//   const navigate = useNavigate();
+
+//   const { products } = useSelector((state) => state.products);
+//   const { users } = useSelector((state) => state.allUsers);
+//   const { user, isAuthenticated } = useSelector((state) => state.user);
+
+//   useEffect(() => {
+//     if (!isAuthenticated) {
+//       navigate("/login");
+//     }
+
+//     if (user?.role !== "admin") {
+//       navigate("/unauthorized");
+//     } else {
+//       dispatch(getAdminProduct());
+//       dispatch(getAllUsers());
+//     }
+//   }, [dispatch, isAuthenticated, navigate, user]);
+
+//   // Fallbacks to prevent crash
+//   const totalProducts = products?.length || 0;
+//   const totalUsers = users?.length || 0;
+
+//   let outOfStock = 0;
+//   products?.forEach((item) => {
+//     if (item.Stock === 0) {
+//       outOfStock += 1;
+//     }
+//   });
+
+//   const lineState = useMemo(
+//     () => ({
+//       labels: ["Initial Amount", "Amount Earned"],
+//       datasets: [
+//         {
+//           label: "TOTAL AMOUNT",
+//           backgroundColor: ["tomato"],
+//           hoverBackgroundColor: ["rgb(197, 72, 49)"],
+//           data: [0, 0], // Hardcoded, update if needed
+//         },
+//       ],
+//     }),
+//     []
+//   );
+
+//   const doughnutState = useMemo(
+//     () => ({
+//       labels: ["Out of Stock", "InStock"],
+//       datasets: [
+//         {
+//           backgroundColor: ["#00A6B4", "#6800B4"],
+//           hoverBackgroundColor: ["#4B5000", "#35014F"],
+//           data: [outOfStock, totalProducts - outOfStock],
+//         },
+//       ],
+//     }),
+//     [outOfStock, totalProducts]
+//   );
+
+//   // Handle loading or missing data
+//   const loading = !products || !users;
+
+//   return (
+//     <div className="dashboard">
+//       <MetaData title="Dashboard - Admin Panel" />
+//       <Sidebar />
+
+//       <div className="dashboardContainer">
+//         <Typography component="h1">Dashboard</Typography>
+
+//         <div className="dashboardSummary">
+//           <div>
+//             <p>
+//               Total Amount <br /> ₹0
+//             </p>
+//           </div>
+//           <div className="dashboardSummaryBox2">
+//             <Link to="/admin/product">
+//               <p>Product</p>
+//               <p>{totalProducts}</p>
+//             </Link>
+//             <Link to="/admin/users">
+//               <p>Users</p>
+//               <p>{totalUsers}</p>
+//             </Link>
+//           </div>
+//         </div>
+
+//         {!loading ? (
+//           <>
+//             <div className="lineChart">
+//               <Line data={lineState} />
+//             </div>
+
+//             <div className="doughnutChart">
+//               <Doughnut data={doughnutState} />
+//             </div>
+//           </>
+//         ) : (
+//           <p>Loading dashboard data...</p>
+//         )}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Dashboard;
+
+
 import React, { useEffect, useMemo } from "react";
 import Sidebar from "./Sidebar.jsx";
 import "./dashboard.css";
@@ -213,6 +357,7 @@ import { Doughnut, Line } from "react-chartjs-2";
 import { useSelector, useDispatch } from "react-redux";
 import { getAdminProduct } from "../../action/productAction";
 import { getAllUsers } from "../../action/userAction.jsx";
+import { getAllOrders } from "../../action/orderAction"; // ✅ Import orders action
 import MetaData from "../Layout/MetaData";
 
 // Chart.js Registration
@@ -243,6 +388,7 @@ const Dashboard = () => {
 
   const { products } = useSelector((state) => state.products);
   const { users } = useSelector((state) => state.allUsers);
+  const { orders } = useSelector((state) => state.allOrders); // ✅ Select orders
   const { user, isAuthenticated } = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -255,12 +401,17 @@ const Dashboard = () => {
     } else {
       dispatch(getAdminProduct());
       dispatch(getAllUsers());
+      dispatch(getAllOrders()); // ✅ Fetch orders
     }
   }, [dispatch, isAuthenticated, navigate, user]);
 
   // Fallbacks to prevent crash
   const totalProducts = products?.length || 0;
   const totalUsers = users?.length || 0;
+  const totalOrders = orders?.length || 0;
+
+  // ✅ Total amount from all orders
+  const totalAmount = orders?.reduce((acc, order) => acc + order.totalPrice, 0) || 0;
 
   let outOfStock = 0;
   products?.forEach((item) => {
@@ -277,11 +428,11 @@ const Dashboard = () => {
           label: "TOTAL AMOUNT",
           backgroundColor: ["tomato"],
           hoverBackgroundColor: ["rgb(197, 72, 49)"],
-          data: [0, 0], // Hardcoded, update if needed
+          data: [0, totalAmount], // ✅ Use dynamic totalAmount
         },
       ],
     }),
-    []
+    [totalAmount]
   );
 
   const doughnutState = useMemo(
@@ -298,8 +449,7 @@ const Dashboard = () => {
     [outOfStock, totalProducts]
   );
 
-  // Handle loading or missing data
-  const loading = !products || !users;
+  const loading = !products || !users || !orders;
 
   return (
     <div className="dashboard">
@@ -312,7 +462,7 @@ const Dashboard = () => {
         <div className="dashboardSummary">
           <div>
             <p>
-              Total Amount <br /> ₹0
+              Total Amount <br /> ₹{totalAmount} {/* ✅ Dynamic total amount */}
             </p>
           </div>
           <div className="dashboardSummaryBox2">
@@ -323,6 +473,10 @@ const Dashboard = () => {
             <Link to="/admin/users">
               <p>Users</p>
               <p>{totalUsers}</p>
+            </Link>
+            <Link to="/admin/orders">
+              <p>Orders</p>
+              <p>{totalOrders}</p> {/* ✅ Optional: show total orders */}
             </Link>
           </div>
         </div>

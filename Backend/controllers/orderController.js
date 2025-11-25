@@ -32,24 +32,30 @@ exports.getSingleOrder = catchAsyncError(async(req, res, next)=>{
 });
 
 //get login user order
-exports.myOrders = catchAsyncError(async (req, res, next) => {
-    console.log("User object in myOrders:", req.user);
 
-    if (!req.user || !req.user._id) {
-        return res.status(400).json({
-            success: false,
-            error: "User not authenticated or invalid ID",
+
+// Get logged-in user's orders
+exports.myOrders = catchAsyncError(async (req, res, next) => {
+    console.log("Logged-in user:", req.user); // should print valid user object
+
+    const orders = await Order.find({ user: req.user._id }).sort({ createdAt: -1 });
+
+    // Optional: handle empty orders
+    if (!orders || orders.length === 0) {
+        return res.status(200).json({
+            success: true,
+            orders: [],
+            message: "No orders found for this user",
         });
     }
-
-    const orders = await Order.find({ user: req.user._id });
-console.log("User:", req.user);
 
     res.status(200).json({
         success: true,
         orders,
     });
 });
+
+
 
 
 //get all orders -- Admin

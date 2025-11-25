@@ -64,7 +64,13 @@ const MyOrders = () => {
       },
     },
   ];
-  const rows = [];
+  const rows = orders?.map((item) => ({
+  id: item._id,
+  status: item.orderStatus,
+  itemsQty: item.orderItems.length,
+  amount: Number(item.totalPrice), // ensure number
+}));
+
 
   orders &&
     orders.forEach((item, index) => {

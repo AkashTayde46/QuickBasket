@@ -1,4 +1,4 @@
-.myOrdersPage {
+/* .myOrdersPage {
     width: 100vw;
     max-width: 100%;
     padding: 0 7vmax;
@@ -77,4 +77,120 @@
     .MuiDataGrid-columnHeader div {
       font: 500 5vw "Roboto" !important;
     }
+  } */
+
+  /* Container for the whole page */
+/* Container for the whole page */
+.myOrdersPage {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Heading above the table */
+#myOrdersHeading {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  color: #1e1e2f;
+  text-align: center;
+}
+
+/* DataGrid table styling */
+.myOrdersTable {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Table header */
+.myOrdersTable .MuiDataGrid-columnHeaders {
+  background-color: #3f51b5;
+  color: #fff; /* white header text for contrast */
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Table cells */
+.myOrdersTable .MuiDataGrid-cell {
+  font-size: 0.95rem;
+  color: #000 !important; /* make all cell text black */
+  padding: 0.5rem 1rem;
+}
+
+/* Alternate row colors */
+.myOrdersTable .MuiDataGrid-row:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+/* Hover effect on rows */
+.myOrdersTable .MuiDataGrid-row:hover {
+  background-color: rgba(63, 81, 181, 0.1);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Action icons */
+.myOrdersTable .MuiDataGrid-cell a {
+  color: #3f51b5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.myOrdersTable .MuiDataGrid-cell a:hover {
+  transform: scale(1.2);
+}
+
+/* Status colors */
+.greenColor {
+  color: #4caf50 !important;
+  font-weight: 600;
+}
+
+.redColor {
+  color: #f44336 !important;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .myOrdersPage {
+    padding: 1rem;
   }
+
+  #myOrdersHeading {
+    font-size: 1.6rem;
+  }
+
+  .myOrdersTable .MuiDataGrid-columnHeaders,
+  .myOrdersTable .MuiDataGrid-cell {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .myOrdersPage {
+    padding: 0.5rem;
+  }
+
+  #myOrdersHeading {
+    font-size: 1.4rem;
+  }
+
+  .myOrdersTable .MuiDataGrid-columnHeaders,
+  .myOrdersTable .MuiDataGrid-cell {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.3rem;
+  }
+}

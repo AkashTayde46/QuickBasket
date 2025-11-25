@@ -822,9 +822,12 @@ import { useDispatch } from "react-redux";
 //import { loadStripe } from "@stripe/stripe-js";
 //import StripeWrapper from "./Components/Cart/StripeWrapper"
 //import Payment from "./Components/Cart/Payment";
+
 import LoadPayment from "./Components/Cart/LoadPayment";
 import ComboBuilder from "./Components/Product/ComboBuilder";
 import CheckoutCombo from "./Components/Product/CheckoutCombo"
+import OrderDetails from "./Components/Order/OrderDetails";
+
 const backendUrl = import.meta.env.VITE_API_BASE_URL;
 
 function App() {
@@ -889,6 +892,16 @@ function App() {
         <>
           <Navbar />
           <ProductDetails />
+          <Footer />
+        </>
+      ),
+    },
+    {
+      path: "/order/:id",
+      element: (
+        <>
+          <Navbar />
+          < OrderDetails/>
           <Footer />
         </>
       ),
@@ -964,6 +977,8 @@ function App() {
         </>
       ),
     },
+
+   
     {
       path: "/combo/create",
       element: (

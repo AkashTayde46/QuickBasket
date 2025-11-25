@@ -62,7 +62,7 @@ export const login = (email, password) => async (dispatch) => {
       { email, password },
       config
     );
-
+localStorage.setItem("token", data.token);
     console.log("✅ Login successful:", data);
 
     dispatch({
@@ -170,7 +170,15 @@ export const updatePassword = (passwords) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_PASSWORD_REQUEST });
 
-    const config = { headers: { "Content-Type": "application/json" } };
+    const token = localStorage.getItem("token");  // <--- GET TOKEN
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,  // <--- ADD TOKEN
+      },
+    };
+
     const { data } = await axios.put(
       `${backendUrl}/api/v1/password/update`,
       passwords,
@@ -181,10 +189,11 @@ export const updatePassword = (passwords) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: UPDATE_PASSWORD_FAIL,
-      payload: error.response.data.message,
+      payload: error.response?.data?.message || "Something went wrong",
     });
   }
 };
+
 
 // Forgot Password
 export const forgotPassword = (email) => async (dispatch) => {
